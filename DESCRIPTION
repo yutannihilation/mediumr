@@ -5,7 +5,8 @@ Version: 0.0.0.9000
 Authors@R: person("Hiroaki", "Yutani", email = "yutani.ini@gmail.com", role = c("aut", "cre"))
 Description: Provides an interface to 'Medium' API.
 Imports: 
-    httr
+    httr,
+    rstudioapi
 Suggests: 
     testthat
 Roxygen: list(markdown = TRUE)
