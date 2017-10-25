@@ -10,7 +10,11 @@ Imports:
     glue,
     rmarkdown,
     miniUI,
-    shiny
+    shiny,
+    commonmark,
+    markdown,
+    stringr,
+    xml2
 Suggests: 
     testthat,
     withr
