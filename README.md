@@ -60,3 +60,9 @@ this <- is(test)
 "
 medium_create_post("test", content = content)
 ````
+
+### Upload An Image
+
+```r
+medium_upload_image("/path/to/image.png")
+```
