@@ -6,13 +6,11 @@
 \alias{medium_get_contributors}
 \title{Medium Publications API}
 \usage{
-medium_get_publications(userId = Sys.getenv("MEDIUM_USER_ID"))
+medium_get_publications()
 
 medium_get_contributors(publicationId)
 }
 \arguments{
-\item{userId}{User ID (no need to specify this usually).}
-
 \item{publicationId}{Publication ID.}
 }
 \value{

@@ -4,7 +4,6 @@
 #' `medium_get_contributors()` returns a list of contributors for a given publication.
 #'
 #' @name medium_publication
-#' @param userId User ID (no need to specify this usually).
 #' @return
 #' Publication:
 #'   * `id`: A unique identifier for the publication.
@@ -17,8 +16,10 @@
 #'   * `userId`: A user ID of the contributor.
 #'   * `role`: Role of the user identified by userId in the publication identified by publicationId. 'editor' or 'writer'.
 #' @export
-medium_get_publications <- function(userId = Sys.getenv("MEDIUM_USER_ID")) {
+medium_get_publications <- function() {
+  userId <- Sys.getenv("MEDIUM_USER_ID")
   if (identical(userId, "")) userId <- medium_get_current_user()$id
+
   result <- medium_request("GET", glue::glue("/v1/users/{userId}/publications"))
   result$data
 }
