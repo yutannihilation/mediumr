@@ -10,10 +10,10 @@ medium_get_current_user()
 \value{
 \itemize{
 \item \code{id}: A unique identifier for the user.
-\item \code{username}: The user’s username on Medium.
-\item \code{name}: The user’s name on Medium.
-\item \code{url}: The URL to the user’s profile on Medium
-\item \code{imageUrl}: The URL to the user’s avatar on Medium
+\item \code{username}: The user's username on Medium.
+\item \code{name}: The user's name on Medium.
+\item \code{url}: The URL to the user's profile on Medium
+\item \code{imageUrl}: The URL to the user's avatar on Medium
 }
 }
 \description{
