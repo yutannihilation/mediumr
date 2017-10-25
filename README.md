@@ -13,6 +13,12 @@ You can install mediumr from github with:
 devtools::install_github("yutannihilation/mediumr")
 ```
 
+## Addin
+
+Using "Post to Medium" addin, you can post Rmd file to Medium directly:
+
+![](man/figures/scresnshot.png)
+
 ## Usage
 
 ### Authentication
