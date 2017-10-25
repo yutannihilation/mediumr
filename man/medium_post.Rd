@@ -41,6 +41,22 @@ The default is \code{"all-rights-reserved"}.}
 \description{
 Creates a post on the authenticated user's profile or a given publication.
 }
+\examples{
+\dontrun{
+content <- "
+# test
+
+1. test1
+2. test2
+
+```r
+this <- is(test)
+```
+"
+medium_create_post("test", content = content)
+}
+
+}
 \seealso{
 \url{https://github.com/Medium/medium-api-docs#33-posts}
 }
