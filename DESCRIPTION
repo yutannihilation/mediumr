@@ -9,7 +9,8 @@ Imports:
     rstudioapi,
     glue
 Suggests: 
-    testthat
+    testthat,
+    withr
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1.9000
 License: MIT + file LICENSE
