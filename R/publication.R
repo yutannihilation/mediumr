@@ -17,8 +17,7 @@
 #'   * `role`: Role of the user identified by userId in the publication identified by publicationId. 'editor' or 'writer'.
 #' @export
 medium_get_publications <- function() {
-  userId <- Sys.getenv("MEDIUM_USER_ID")
-  if (identical(userId, "")) userId <- medium_get_current_user()$id
+  userId <- medium_get_current_user_id()
 
   result <- medium_request("GET", glue::glue("/v1/users/{userId}/publications"))
   result$data

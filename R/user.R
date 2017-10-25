@@ -15,7 +15,13 @@ medium_get_current_user <- function() {
   result <- medium_request("GET", "/v1/me")
 
   # user ID is needed to send requests to Publications API and Posts API.
-  Sys.setenv(MEDIUM_USER_ID = result$data$id)
+  Sys.setenv(MEDIUM_USER_ID = result$id)
 
-  result$data
+  result
+}
+
+medium_get_current_user_id <- function() {
+  userId <- Sys.getenv("MEDIUM_USER_ID")
+  if (identical(userId, "")) userId <- medium_get_current_user()$id
+  userId
 }
