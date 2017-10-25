@@ -19,6 +19,9 @@ Using "Post to Medium" addin, you can post Rmd file to Medium directly:
 
 ![](man/figures/scresnshot.png)
 
+![](man/figures/scresnshot_medium.png)
+
+
 ## Usage
 
 ### Authentication
