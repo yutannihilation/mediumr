@@ -1,0 +1,15 @@
+Package: mediumr
+Type: Package
+Title: R Interface to 'Medium' API
+Version: 0.0.0.9000
+Authors@R: person("Hiroaki", "Yutani", email = "yutani.ini@gmail.com", role = c("aut", "cre"))
+Description: Provides an interface to 'Medium' API.
+Imports: 
+    httr
+Suggests: 
+    testthat
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.0.1.9000
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
