@@ -17,9 +17,9 @@ devtools::install_github("yutannihilation/mediumr")
 
 Using "Post to Medium" addin, you can post Rmd file to Medium directly:
 
-![](man/figures/scresnshot.png)
+![](man/figures/screenshot.png)
 
-![](man/figures/scresnshot_medium.png)
+![](man/figures/screenshot_medium.png)
 
 
 ## Usage
