@@ -2,25 +2,25 @@
 #'
 #' Knit and post a given R Markdown file to 'Medium'.
 #'
-#' @param input path to a .Rmd file. If `NULL`, use the activedocument.
+#' @param Rmd_file path to a .Rmd file. If `NULL`, use the activedocument.
 #'
 #' @export
-medium_upload_Rmd <- function(input = NULL) {
-  if(is.null(input) && rstudioapi::isAvailable()){
-    input <- rstudioapi::getActiveDocumentContext()$path
+medium_create_post_from_Rmd <- function(Rmd_file = NULL) {
+  if(is.null(Rmd_file) && rstudioapi::isAvailable()){
+    Rmd_file <- rstudioapi::getActiveDocumentContext()$path
   }
 
-  if(tolower(tools::file_ext(input)) != "rmd") {
-    stop(sprintf("%s is not .Rmd file!", basename(input)))
+  if(tolower(tools::file_ext(Rmd_file)) != "rmd") {
+    stop(sprintf("%s is not .Rmd file!", basename(Rmd_file)))
   }
 
   md_file <- rmarkdown::render(
-    input = input,
+    input = Rmd_file,
     output_format = rmarkdown::md_document(variant = "markdown_github"),
     encoding = "UTF-8"
   )
 
-  front_matter <- rmarkdown::yaml_front_matter(input, "UTF-8")
+  front_matter <- rmarkdown::yaml_front_matter(Rmd_file, "UTF-8")
 
   mediumaddin_upload(
     md_file = md_file,
@@ -39,6 +39,22 @@ mediumaddin_upload <- function(md_file, title, tags) {
     miniUI::gadgetTitleBar("Preview",
                            right = miniUI::miniTitleBarButton("done", "Publish", primary = TRUE)),
     miniUI::miniContentPanel(
+      shiny::fluidRow(
+        shiny::column(3, shiny::radioButtons(
+          "publishStatus", "publishStatus",
+          choices = c("draft", "public", "unlisted")
+        )),
+        shiny::column(3, shiny::selectInput(
+          "license", "license",
+          choices = eval(formals(medium_create_post)$license)
+        )),
+        shiny::column(2, shiny::checkboxInput("publication", "associate with a publication")),
+        shiny::column(4, shiny::conditionalPanel(
+          condition = "input.publication == true",
+          shiny::textInput("publicationId", label = "publication ID")
+        ))
+      ),
+      shiny::hr(),
       shiny::h1(title, align = "center"),
       shiny::div(
         shiny::HTML(
@@ -58,6 +74,8 @@ mediumaddin_upload <- function(md_file, title, tags) {
         Sys.setenv(MEDIUM_API_TOKEN = token)
         return(FALSE)
       }
+
+      publicationId <- if (nchar(input$publicationId) > 0) input$publicationId else NULL
 
       progress <- shiny::Progress$new(session, min=0, max=2)
       on.exit(progress$close())
@@ -85,7 +103,9 @@ mediumaddin_upload <- function(md_file, title, tags) {
         title = title,
         contentFormat = "markdown",
         content = md_text,
-        tags = tags
+        tags = tags,
+        publishStatus = input$publishStatus,
+        publicationId = publicationId
       )
 
       progress$set(value = 2, message = "Done!")

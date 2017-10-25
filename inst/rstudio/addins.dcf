@@ -1,4 +1,4 @@
 Name: Post to Medium
 Description: Knit an R Markdown file and post the result Markdown file to Medium
-Binding: medium_upload_Rmd
+Binding: medium_create_post_from_Rmd
 Interactive: true
