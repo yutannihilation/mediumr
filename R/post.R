@@ -83,7 +83,7 @@ medium_create_post <- function(title,
                            ),
                            encode = "json")
 
-  if (interactive()) browseURL(result$url)
+  if (interactive()) utils::browseURL(result$url)
 
   result
 }
