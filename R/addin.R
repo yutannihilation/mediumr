@@ -31,7 +31,7 @@ medium_create_post_from_Rmd <- function(Rmd_file = NULL) {
 
 mediumaddin_upload <- function(md_file, title, tags) {
   # Medium doesn't insert title in its content automatically
-  md_text <- paste(glue::glue("# title"),
+  md_text <- paste(glue::glue("# {title}"),
                    read_utf8(md_file),
                    sep = "\n\n")
 
