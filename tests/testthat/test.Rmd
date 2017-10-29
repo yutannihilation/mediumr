@@ -1,0 +1,20 @@
+---
+title: "Test"
+author: "Hiroaki Yutani"
+tags: ["R", "test"]
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## include plot
+
+```{r plot}
+plot(1)
+```
+
+## include external graphics
+
+![](https://upload.wikimedia.org/wikipedia/commons/7/78/Proboscis_monkey_%28Nasalis_larvatus%29_composite.jpg)
+

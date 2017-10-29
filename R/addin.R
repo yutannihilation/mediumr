@@ -131,5 +131,7 @@ read_utf8 <- function(x) {
 extract_image_paths <- function(md_text) {
   html_doc <- xml2::read_html(commonmark::markdown_html(md_text))
   img_nodes <- xml2::xml_find_all(html_doc, ".//img")
-  xml2::xml_attr(img_nodes, "src")
+  img_paths <- xml2::xml_attr(img_nodes, "src")
+  # exclude external images
+  img_paths[!grepl(pattern = "^http", img_paths)]
 }
