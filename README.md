@@ -24,7 +24,7 @@ Using "Post to Medium" addin, you can post Rmd file to Medium directly:
 ![](man/figures/screenshot_medium.png)
 
 
-## Usage
+## Other Usages
 
 ### Authentication
 
@@ -77,3 +77,9 @@ medium_create_post("test", content = content)
 ```r
 medium_upload_image("/path/to/image.png")
 ```
+
+## Limitations
+
+* Since Medium doesn't provide update API, you cannot update existing posts via mediumr.
+* Medium doesn't support tables. So, it makes little sense to use `knitr::kabble()` or `formattable::formattable()` for printing data.frames.
+
