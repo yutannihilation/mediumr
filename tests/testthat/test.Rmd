@@ -8,10 +8,16 @@ tags: ["R", "test"]
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## include plot
+(This is a test post)
+
+## Include Plots
 
 ```{r plot}
-plot(1)
+library(ggplot2)
+
+nc <- sf::st_read(system.file("shape/nc.shp", package = "sf"), quiet = TRUE)
+ggplot(nc) +
+  geom_sf(aes(fill = AREA))
 ```
 
 ## include external graphics
